@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+
+magda-sanity/node_modules
+magda-strapi/node_modules
+
 # testing
 /coverage
 
