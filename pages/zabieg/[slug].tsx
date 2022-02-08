@@ -5,6 +5,7 @@ import { GetStaticProps } from 'next'
 import PortableText from 'react-portable-text'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import Head from 'next/head'
 interface Props {
   zabieg: IZabieg
 }
@@ -13,6 +14,10 @@ export default function Zabieg({ zabieg }: Props) {
   console.log(zabieg)
   return (
     <>
+      <Head>
+        <title>{zabieg.name}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <Navbar />
       <div className=" mt-20 bg-white p-3 text-black">
         <div className="mb-20 grid-cols-2 place-items-center md:grid">
@@ -50,7 +55,9 @@ export default function Zabieg({ zabieg }: Props) {
             h2: (props: any) => (
               <h2 className="my-3 text-xl font-bold" {...props} />
             ),
-            normal: (props: any) => <p className="mb-2" {...props} />,
+            normal: (props: any) => (
+              <p className="mb-2 leading-7 tracking-normal" {...props} />
+            ),
           }}
         />
 
@@ -86,7 +93,7 @@ export default function Zabieg({ zabieg }: Props) {
                       {z.priceForSet}
                     </td>
                   ) : (
-                    ''
+                    <td className="p-4 text-center text-sm text-gray-700"></td>
                   )}
                 </tr>
               ))}
