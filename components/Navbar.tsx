@@ -100,21 +100,21 @@ export default function Navbar() {
             >
               <a
                 href="/#about"
-                className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700"
+                className="flex items-center rounded-md px-3 py-2 font-medium text-white hover:bg-gray-700"
               >
-                O mnie
+                <span className="inline-block align-middle">O mnie</span>
               </a>
               <a
                 href="https://www.instagram.com/pieknoodreki_kosmetologia.pmu/"
                 target="_blank"
-                className="ml-auto block w-1/2 rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                className=" ml-auto flex w-1/2 rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
-                <FaInstagram className=" ml-auto text-3xl " />
+                <FaInstagram className="ml-auto text-3xl " />
               </a>
 
               <a
                 href="/#offer"
-                className="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                className="flex items-center rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
                 Zabiegi
               </a>
