@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { RefObject, useRef } from 'react'
+import React from 'react'
 import { urlFor } from '../sanity'
 import { IData } from '../features/interfaces/Interfaces'
 
