@@ -43,7 +43,12 @@ export default {
     },
     {
       name: 'body',
-      title: 'Opis zabiegu',
+      title: 'Krotki opis zabiegu do zdjecia',
+      type: 'blockContent',
+    },
+    {
+      name: 'bodyLong',
+      title: 'Długi opis zabiegu',
       type: 'blockContent',
     },
   ],

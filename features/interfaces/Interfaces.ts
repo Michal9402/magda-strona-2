@@ -25,6 +25,7 @@ export interface IZabieg {
         current: string;
     };
     body: [object];
+    bodyLong: [object]
     pricelist: [Pricelist]
     image: {
         asset: {

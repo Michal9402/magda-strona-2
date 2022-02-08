@@ -15,7 +15,7 @@ export default function Zabieg({ zabieg }: Props) {
     <>
       <Navbar />
       <div className=" mt-20 bg-white p-3 text-black">
-        <div className="grid-cols-2 place-items-center md:grid">
+        <div className="mb-20 grid-cols-2 place-items-center md:grid">
           <img
             className=" rounded-3xl shadow-lg md:max-h-[30rem]"
             src={urlFor(zabieg.image).url()!}
@@ -23,14 +23,36 @@ export default function Zabieg({ zabieg }: Props) {
           />
           <PortableText
             className="mx-auto mt-10 max-w-6xl px-5 md:mt-0"
+            projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
+            dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
             content={zabieg.body}
             serializers={{
               h1: (props: any) => (
-                <h1 className="my-5 text-2xl font-bold" {...props} />
+                <h1 className="my-5 text-5xl font-bold" {...props} />
               ),
+              h2: (props: any) => (
+                <h2 className="my-3 text-xl font-bold text-black" {...props} />
+              ),
+              normal: (props: any) => <p className="mb-2" {...props} />,
             }}
           />
         </div>
+
+        <PortableText
+          className="mx-auto max-w-6xl bg-gray-200 p-5 px-5 shadow-lg md:mt-0"
+          projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
+          dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
+          content={zabieg.bodyLong}
+          serializers={{
+            h1: (props: any) => (
+              <h1 className="my-5 text-5xl font-bold" {...props} />
+            ),
+            h2: (props: any) => (
+              <h2 className="my-3 text-xl font-bold" {...props} />
+            ),
+            normal: (props: any) => <p className="mb-2" {...props} />,
+          }}
+        />
 
         <div className=" mt-20">
           <h1 className=" text-center text-2xl">Cennik - {zabieg.name}</h1>
@@ -110,6 +132,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     priceForSet
     },
     body,
+    bodyLong,
     image
   }`
 
