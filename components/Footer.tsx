@@ -3,7 +3,10 @@ import { FaInstagram, FaFacebook } from 'react-icons/fa'
 
 export default function Footer() {
   return (
-    <div className=" footer footer-center mt-20 flex h-auto w-full justify-between bg-gray-800 p-6 text-white">
+    <div
+      className=" footer footer-center mt-20 flex h-auto w-full justify-between bg-gray-800 p-6 text-white"
+      id="contact"
+    >
       <div className="w-1/2">
         <h1 className=" footer-title">
           Piękno Od Ręki <br /> Magdalena Kobylińska
@@ -17,7 +20,9 @@ export default function Footer() {
           </a>
         </p>
 
-        <p>Tel: +48 555 111 222</p>
+        <p>
+          Tel: <a href="tel:+48555111222">+48 555 111 222</a>
+        </p>
       </div>
       <div className="flex w-1/2 justify-around p-5">
         <a

@@ -16,6 +16,20 @@ export default function Navbar() {
         <div className="flex items-center space-x-5">
           <Link href="/">Logo</Link>
         </div>
+        <div className="my-2 flex space-x-5 md:hidden">
+          <a
+            href="https://www.instagram.com/pieknoodreki_kosmetologia.pmu/"
+            target="_blank"
+          >
+            <FaInstagram className="text-2xl" />
+          </a>
+          <a
+            href="https://www.facebook.com/Pi%C4%99kno-od-r%C4%99ki-101757858988622"
+            target="_blank"
+          >
+            <FaFacebook className="text-2xl" />
+          </a>
+        </div>
         <nav className="hidden md:block">
           <ul className="flex items-center space-x-5">
             <a className="btn btn-ghost" href="/#about">
@@ -23,6 +37,9 @@ export default function Navbar() {
             </a>
             <a className="btn" href="/#offer">
               Zabiegi
+            </a>
+            <a className="btn-outline btn" href="/#offer">
+              Kontakt
             </a>
             <a
               href="https://www.instagram.com/pieknoodreki_kosmetologia.pmu/"
@@ -94,22 +111,12 @@ export default function Navbar() {
       >
         {(ref) => (
           <div className=" md:hidden" id="mobile-menu">
-            <div
-              ref={ref}
-              className="grid grid-cols-2 space-y-1 px-2 pt-2 pb-3 sm:px-3"
-            >
+            <div ref={ref} className=" space-y-1 px-2 pt-2 pb-3 sm:px-3">
               <a
                 href="/#about"
                 className="flex items-center rounded-md px-3 py-2 font-medium text-white hover:bg-gray-700"
               >
                 <span className="inline-block align-middle">O mnie</span>
-              </a>
-              <a
-                href="https://www.instagram.com/pieknoodreki_kosmetologia.pmu/"
-                target="_blank"
-                className=" ml-auto flex w-1/2 rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-              >
-                <FaInstagram className="ml-auto text-3xl " />
               </a>
 
               <a
@@ -118,13 +125,11 @@ export default function Navbar() {
               >
                 Zabiegi
               </a>
-
               <a
-                href="https://www.facebook.com/Pi%C4%99kno-od-r%C4%99ki-101757858988622"
-                target="_blank"
-                className="ml-auto block w-1/2 rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+                href="#contact"
+                className="flex items-center rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
               >
-                <FaFacebook className="ml-auto text-3xl" />
+                Kontakt
               </a>
             </div>
           </div>

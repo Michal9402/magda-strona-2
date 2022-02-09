@@ -22,7 +22,7 @@ export default function Zabieg({ zabieg }: Props) {
       <div className=" mt-20 bg-white p-3 text-black">
         <div className="mb-20 grid-cols-2 place-items-center md:grid">
           <img
-            className=" rounded-3xl shadow-lg md:max-h-[30rem]"
+            className=" mx-auto rounded-3xl shadow-lg md:max-h-[30rem]"
             src={urlFor(zabieg.image).url()!}
             alt=""
           />
@@ -33,12 +33,17 @@ export default function Zabieg({ zabieg }: Props) {
             content={zabieg.body}
             serializers={{
               h1: (props: any) => (
-                <h1 className="my-5 text-5xl font-bold" {...props} />
+                <h1 className="my-5 text-5xl font-semibold" {...props} />
               ),
               h2: (props: any) => (
-                <h2 className="my-3 text-xl font-bold text-black" {...props} />
+                <h2
+                  className="my-3 text-xl font-semibold text-black"
+                  {...props}
+                />
               ),
-              normal: (props: any) => <p className="mb-2" {...props} />,
+              normal: (props: any) => (
+                <p className="mb-2 tracking-wide" {...props} />
+              ),
             }}
           />
         </div>
@@ -53,7 +58,7 @@ export default function Zabieg({ zabieg }: Props) {
               <h1 className="my-5 text-5xl font-bold" {...props} />
             ),
             h2: (props: any) => (
-              <h2 className="my-3 text-xl font-bold" {...props} />
+              <h2 className="my-3 text-xl font-bold tracking-wide" {...props} />
             ),
             normal: (props: any) => (
               <p className="mb-2 leading-7 tracking-normal" {...props} />
