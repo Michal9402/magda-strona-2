@@ -1,7 +1,7 @@
 import React from 'react'
 import { sanityClient, urlFor } from '../../sanity'
 import { IProcedure } from '../../features/interfaces/Interfaces'
-import { GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import PortableText from 'react-portable-text'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
@@ -10,7 +10,7 @@ interface SlugPropsType {
   procedure: IProcedure
 }
 
-const Procedure: React.FC<SlugPropsType> = ({ procedure }) => {
+const Procedure: NextPage<SlugPropsType> = ({ procedure }) => {
   const renderTable = () => (
     <table className=" mx-auto mt-10 w-3/4">
       <thead className="border-b-2 border-gray-400">
@@ -110,7 +110,7 @@ const Procedure: React.FC<SlugPropsType> = ({ procedure }) => {
 
 export default Procedure
 
-export const getStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const query = `*[_type == "zabieg"]{
         _id,
      slug
