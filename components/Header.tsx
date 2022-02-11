@@ -1,5 +1,6 @@
 import pieknoMobileImg from '../assets/img/piekno-header-mobile.jpeg'
-export default function Header() {
+
+const Header: React.FC = () => {
   return (
     <header className="h-[60vh] sm:h-[80vh]">
       <div
@@ -11,3 +12,5 @@ export default function Header() {
     </header>
   )
 }
+
+export default Header

@@ -1,21 +1,53 @@
 import React from 'react'
 import { sanityClient, urlFor } from '../../sanity'
-import { IZabieg } from '../../features/interfaces/Interfaces'
+import { IProcedure } from '../../features/interfaces/Interfaces'
 import { GetStaticProps } from 'next'
 import PortableText from 'react-portable-text'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Head from 'next/head'
-interface Props {
-  zabieg: IZabieg
+interface SlugPropsType {
+  procedure: IProcedure
 }
 
-export default function Zabieg({ zabieg }: Props) {
-  console.log(zabieg)
+const Procedure: React.FC<SlugPropsType> = ({ procedure }) => {
+  const renderTable = () => (
+    <table className=" mx-auto mt-10 w-3/4">
+      <thead className="border-b-2 border-gray-400">
+        <tr>
+          <th className="p-3 text-sm font-semibold tracking-wide">Obszar</th>
+          <th className="p-3 text-sm font-semibold tracking-wide">Cena</th>
+          {procedure.set === true ? (
+            <th className="p-3 text-sm font-semibold tracking-wide">
+              Cena pakietu (4 zabiegi)
+            </th>
+          ) : (
+            ''
+          )}
+        </tr>
+      </thead>
+      <tbody>
+        {procedure.pricelist.map((p) => (
+          <tr key={p._id} className=" odd:bg-gray-300">
+            <td className=" p-4 text-sm text-gray-700">{p.name}</td>
+            <td className="p-4 text-center text-sm text-gray-700">{p.price}</td>
+            {p.priceForSet !== null ? (
+              <td className="p-4 text-center text-sm text-gray-700">
+                {p.priceForSet}
+              </td>
+            ) : (
+              <td className="p-4 text-center text-sm text-gray-700"></td>
+            )}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )
+
   return (
     <>
       <Head>
-        <title>{zabieg.name}</title>
+        <title>{procedure.name}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Navbar />
@@ -23,14 +55,14 @@ export default function Zabieg({ zabieg }: Props) {
         <div className="mb-20 grid-cols-2 place-items-center md:grid">
           <img
             className=" mx-auto rounded-3xl shadow-lg md:max-h-[30rem]"
-            src={urlFor(zabieg.image).url()!}
+            src={urlFor(procedure.image).url()!}
             alt=""
           />
           <PortableText
             className="mx-auto mt-10 max-w-6xl px-5 md:mt-0"
             projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
             dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
-            content={zabieg.body}
+            content={procedure.body}
             serializers={{
               h1: (props: any) => (
                 <h1 className="my-5 text-5xl font-semibold" {...props} />
@@ -52,7 +84,7 @@ export default function Zabieg({ zabieg }: Props) {
           className="mx-auto max-w-6xl bg-gray-200 p-5 px-5 shadow-lg md:mt-0"
           projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
           dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
-          content={zabieg.bodyLong}
+          content={procedure.bodyLong}
           serializers={{
             h1: (props: any) => (
               <h1 className="my-5 text-5xl font-bold" {...props} />
@@ -67,43 +99,8 @@ export default function Zabieg({ zabieg }: Props) {
         />
 
         <div className=" mt-20">
-          <h1 className=" text-center text-2xl">Cennik - {zabieg.name}</h1>
-          <table className=" mx-auto mt-10 w-3/4">
-            <thead className="border-b-2 border-gray-400">
-              <tr>
-                <th className="p-3 text-sm font-semibold tracking-wide">
-                  Obszar
-                </th>
-                <th className="p-3 text-sm font-semibold tracking-wide">
-                  Cena
-                </th>
-                {zabieg.set === true ? (
-                  <th className="p-3 text-sm font-semibold tracking-wide">
-                    Cena pakietu (4 zabiegi)
-                  </th>
-                ) : (
-                  ''
-                )}
-              </tr>
-            </thead>
-            <tbody>
-              {zabieg.pricelist.map((z) => (
-                <tr key={zabieg._id} className=" odd:bg-gray-300">
-                  <td className=" p-4 text-sm text-gray-700">{z.name}</td>
-                  <td className="p-4 text-center text-sm text-gray-700">
-                    {z.price}
-                  </td>
-                  {z.priceForSet !== null ? (
-                    <td className="p-4 text-center text-sm text-gray-700">
-                      {z.priceForSet}
-                    </td>
-                  ) : (
-                    <td className="p-4 text-center text-sm text-gray-700"></td>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <h1 className=" text-center text-2xl">Cennik - {procedure.name}</h1>
+          {renderTable()}
         </div>
       </div>
       <Footer />
@@ -111,17 +108,19 @@ export default function Zabieg({ zabieg }: Props) {
   )
 }
 
+export default Procedure
+
 export const getStaticPaths = async () => {
   const query = `*[_type == "zabieg"]{
         _id,
      slug
      }`
 
-  const zabiegi = await sanityClient.fetch(query)
+  const procedures = await sanityClient.fetch(query)
 
-  const paths = zabiegi.map((zabieg: IZabieg) => ({
+  const paths = procedures.map((procedure: IProcedure) => ({
     params: {
-      slug: zabieg.slug.current,
+      slug: procedure.slug.current,
     },
   }))
   return {
@@ -139,6 +138,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     slug,
     set,
     'pricelist': pricelist[] -> {
+      _id,
     name,
     price,
     priceForSet
@@ -148,18 +148,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
     image
   }`
 
-  const zabieg = await sanityClient.fetch(query, {
+  const procedure = await sanityClient.fetch(query, {
     slug: context.params?.slug,
   })
 
-  if (!zabieg) {
+  if (!procedure) {
     return {
       notFound: true,
     }
   }
   return {
     props: {
-      zabieg,
+      procedure,
     },
     revalidate: 60, //after 60 sec it ll update old cached version
   }

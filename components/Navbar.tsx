@@ -2,21 +2,25 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import { FaFacebook, FaInstagram } from 'react-icons/fa'
 import { Transition } from '@headlessui/react'
+import logoPng from '../assets/img/logotransparent.png'
 
-export default function Navbar() {
-  const [dropdown, setDropdown] = useState(false)
-  const handleClick = () => {
-    setDropdown(!dropdown)
-  }
+const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-black bg-opacity-90 p-5 text-white">
-      <div className="flex justify-between">
-        <div className="flex items-center space-x-5">
-          <Link href="/">Logo</Link>
+    <div className="sticky top-0 z-50 w-full bg-black bg-opacity-90 p-5 text-white md:pl-5">
+      <div className=" mx-auto flex flex-wrap items-center justify-between">
+        <div className="order-2 -ml-5 md:order-1 md:-ml-0">
+          <Link href="/">
+            <img
+              src={logoPng.src}
+              alt="logo"
+              className=" h-10 cursor-pointer"
+            />
+          </Link>
         </div>
-        <div className="my-2 flex space-x-5 md:hidden">
+
+        <div className="order-3 my-2 -ml-16 flex space-x-5 md:order-3 md:hidden">
           <a
             href="https://www.instagram.com/pieknoodreki_kosmetologia.pmu/"
             target="_blank"
@@ -30,7 +34,7 @@ export default function Navbar() {
             <FaFacebook className="text-2xl" />
           </a>
         </div>
-        <nav className="hidden md:block">
+        <nav className="hidden md:order-2 md:block">
           <ul className="flex items-center space-x-5">
             <a className="btn btn-ghost" href="/#about">
               O mnie
@@ -38,7 +42,7 @@ export default function Navbar() {
             <a className="btn" href="/#offer">
               Zabiegi
             </a>
-            <a className="btn-outline btn" href="/#offer">
+            <a className="btn-outline btn" href="#contact">
               Kontakt
             </a>
             <a
@@ -55,7 +59,7 @@ export default function Navbar() {
             </a>
           </ul>
         </nav>
-        <div className="-mr-2 flex md:hidden">
+        <div className="order-1 -mr-2 flex md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
             type="button"
@@ -139,81 +143,4 @@ export default function Navbar() {
   )
 }
 
-// import Link from 'next/link'
-// import React, { RefObject, useState } from 'react'
-// import { FaFacebook, FaInstagram } from 'react-icons/fa'
-// import { GiHamburgerMenu } from 'react-icons/gi'
-
-// export default function Navbar() {
-//   const [dropdown, setDropdown] = useState(false)
-//   const handleClick = () => {
-//     setDropdown(!dropdown)
-//   }
-
-//   return (
-//     <div className=" sticky top-0 z-50 flex w-full justify-between bg-black p-5 text-white">
-//       <div className="flex items-center space-x-5">
-//         <Link href="/">Logo</Link>
-//       </div>
-//       <div className="dropdown-end dropdown align-middle sm:hidden">
-//         <div tabIndex={0} className="">
-//           <GiHamburgerMenu
-//             className=" cursor-pointer text-2xl"
-//             onClick={handleClick}
-//           />
-//         </div>
-//         <ul
-//           tabIndex={1}
-//           className="dropdown-content menu rounded-box w-52 bg-green-700 p-2 shadow"
-//         >
-//           <li>
-//             <Link href="/#about">O mnie</Link>
-//           </li>
-//           <li>
-//             <Link href="/#offer">Zabiegi</Link>
-//           </li>
-//           <div className="flex justify-around">
-//             <div className=" w-1/2 rounded p-2 hover:opacity-50">
-//               <a
-//                 href="https://www.instagram.com/pieknoodreki_kosmetologia.pmu/"
-//                 target="_blank"
-//               >
-//                 <FaInstagram className="mx-auto text-3xl " />
-//               </a>
-//             </div>
-//             <div className="w-1/2 rounded p-2 hover:opacity-50">
-//               <a
-//                 href="https://www.facebook.com/Pi%C4%99kno-od-r%C4%99ki-101757858988622"
-//                 target="_blank"
-//               >
-//                 <FaFacebook className="mx-auto text-3xl" />
-//               </a>
-//             </div>
-//           </div>
-//         </ul>
-//       </div>
-//       <nav className="hidden sm:block">
-//         <ul className="flex items-center space-x-5">
-//           <a className="btn btn-ghost" href="/#about">
-//             O mnie
-//           </a>
-//           <a className="btn" href="/#offer">
-//             Zabiegi
-//           </a>
-//           <a
-//             href="https://www.instagram.com/pieknoodreki_kosmetologia.pmu/"
-//             target="_blank"
-//           >
-//             <FaInstagram className="text-2xl" />
-//           </a>
-//           <a
-//             href="https://www.facebook.com/Pi%C4%99kno-od-r%C4%99ki-101757858988622"
-//             target="_blank"
-//           >
-//             <FaFacebook className="text-2xl" />
-//           </a>
-//         </ul>
-//       </nav>
-//     </div>
-//   )
-// }
+export default Navbar

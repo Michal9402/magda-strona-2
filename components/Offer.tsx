@@ -3,7 +3,11 @@ import React from 'react'
 import { urlFor } from '../sanity'
 import { IData } from '../features/interfaces/Interfaces'
 
-export default function Offer({ data }: IData) {
+interface OfferPropsType {
+  data: IData[]
+}
+
+const Offer: React.FC<OfferPropsType> = ({ data }) => {
   return (
     <>
       <hr className="my-20 mx-auto max-w-lg border-yellow-500" id="offer" />
@@ -36,3 +40,5 @@ export default function Offer({ data }: IData) {
     </>
   )
 }
+
+export default Offer

@@ -1,21 +1,19 @@
 export interface IData {
-    data: [{
-        _id: number;
-        name: string;
-        description: string;
-        slug: {
-            _type: string;
-            current: string;
+    _id: number;
+    name: string;
+    description: string;
+    slug: {
+        _type: string;
+        current: string;
+    }
+    image: {
+        asset: {
+            url: string;
+
         }
-        image: {
-            asset: {
-                url: string;
-    
-            }
-        };
-    }]
+    };
 }
-export interface IZabieg {
+export interface IProcedure {
     _id: string;
     _createdAt: string;
     name: string;
@@ -35,6 +33,7 @@ export interface IZabieg {
 }
 
 export interface Pricelist {
+    _id: string;
     name: string;
     price: number;
     priceForSet: number;

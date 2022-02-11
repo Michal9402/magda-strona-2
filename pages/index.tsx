@@ -8,9 +8,10 @@ import { IData } from '../features/interfaces/Interfaces'
 import Footer from '../components/Footer'
 import { useRef } from 'react'
 
-export default function Home({ data }: IData) {
-  const demoRef = useRef<HTMLDivElement | null>(null)
-
+interface HomeProps {
+  data: IData[]
+}
+const Home: React.FC<HomeProps> = ({ data }) => {
   return (
     <>
       <Head>
@@ -28,6 +29,8 @@ export default function Home({ data }: IData) {
   )
 }
 
+export default Home
+
 export async function getStaticProps() {
   const query = `*[_type == "zabieg"] | order(_createdAt){
     _id,
@@ -38,7 +41,7 @@ slug,
 image
   }`
 
-  const data = await sanityClient.fetch(query)
+  const data: IData = await sanityClient.fetch(query)
 
   return {
     props: {
