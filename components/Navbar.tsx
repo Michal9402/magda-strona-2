@@ -1,16 +1,40 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect, RefObject } from 'react'
 import { FaFacebook, FaInstagram } from 'react-icons/fa'
 import { Transition } from '@headlessui/react'
 import logoPng from '../assets/img/logotransparent.png'
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const wrapperRef = useRef<HTMLDivElement | null>(null)
+
+  function useDropdownClose(ref: RefObject<HTMLDivElement>) {
+    useEffect(() => {
+      function handleClickOutside(event: MouseEvent) {
+        //@ts-ignore
+        if (ref.current && !ref.current.contains(event.target)) {
+          setIsOpen(false)
+        }
+      }
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside)
+      }
+    }, [ref])
+  }
+  useDropdownClose(wrapperRef)
+
+  const handleClick = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-black bg-opacity-90 p-5 text-white md:pl-5">
+    <div
+      ref={wrapperRef}
+      className="sticky top-0 z-50 w-full bg-black bg-opacity-90 p-5 text-white md:pl-5"
+    >
       <div className=" mx-auto flex flex-wrap items-center justify-between">
-        <div className="order-2 -ml-5 md:order-1 md:-ml-0">
+        <div className="order-2 -ml-10 md:order-1 md:-ml-0">
           <Link href="/">
             <img
               src={logoPng.src}
@@ -61,7 +85,7 @@ const Navbar: React.FC = () => {
         </nav>
         <div className="order-1 -mr-2 flex md:hidden">
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={handleClick}
             type="button"
             className="inline-flex items-center justify-center rounded-md bg-black bg-opacity-90 p-2 text-gray-400 hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
             aria-controls="mobile-menu"
@@ -115,7 +139,7 @@ const Navbar: React.FC = () => {
       >
         {(ref) => (
           <div className=" md:hidden" id="mobile-menu">
-            <div ref={ref} className=" space-y-1 px-2 pt-2 pb-3 sm:px-3">
+            <div className=" space-y-1 px-2 pt-2 pb-3 sm:px-3">
               <a
                 href="/#about"
                 className="flex items-center rounded-md px-3 py-2 font-medium text-white hover:bg-gray-700"
