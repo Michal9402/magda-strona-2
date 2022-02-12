@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
             <img
               src={logoPng.src}
               alt="logo"
-              className=" h-10 cursor-pointer"
+              className="h-7 cursor-pointer md:h-10"
             />
           </Link>
         </div>

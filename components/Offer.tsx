@@ -28,7 +28,7 @@ const Offer: React.FC<OfferPropsType> = ({ data }) => {
             <div className="card-body justify-end">
               <h2 className="card-title">{service.name}</h2>
               <p>{service.description}</p>
-              <div className="card-actions ">
+              <div className="card-actions ml-auto ">
                 <Link href={`/zabieg/${service.slug.current}`}>
                   <button className="btn bg-green-900 shadow-lg">Więcej</button>
                 </Link>
