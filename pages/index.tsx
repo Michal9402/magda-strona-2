@@ -6,7 +6,6 @@ import Navbar from '../components/Navbar'
 import Offer from '../components/Offer'
 import { IData } from '../features/interfaces/Interfaces'
 import Footer from '../components/Footer'
-import { useRef } from 'react'
 
 interface HomeProps {
   data: IData[]
