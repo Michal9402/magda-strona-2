@@ -6,6 +6,10 @@ import PortableText from 'react-portable-text'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Head from 'next/head'
+import Form from '../../components/Form'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 interface SlugPropsType {
   procedure: IProcedure
 }
@@ -103,7 +107,9 @@ const Procedure: NextPage<SlugPropsType> = ({ procedure }) => {
           {renderTable()}
         </div>
       </div>
+      <Form />
       <Footer />
+      <ToastContainer />
     </>
   )
 }

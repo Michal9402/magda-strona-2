@@ -6,7 +6,9 @@ import Navbar from '../components/Navbar'
 import Offer from '../components/Offer'
 import { IData } from '../features/interfaces/Interfaces'
 import Footer from '../components/Footer'
-import { useRef } from 'react'
+import Form from '../components/Form'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface HomeProps {
   data: IData[]
@@ -23,7 +25,9 @@ const Home: React.FC<HomeProps> = ({ data }) => {
         <Header />
         <About />
         <Offer data={data} />
+        <Form />
         <Footer />
+        <ToastContainer />
       </div>
     </>
   )
