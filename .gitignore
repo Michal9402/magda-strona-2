@@ -9,9 +9,6 @@
 magda-sanity/node_modules
 magda-strapi/node_modules
 
-public/sitemap-0.xml
-public/sitemap.xml
-public/robots.txt
 
 # testing
 /coverage
@@ -43,3 +40,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+/public/robots.txt
+/public/sitemap.xml
+/public/sitemap-0.xml
