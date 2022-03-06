@@ -23,6 +23,7 @@ const Offer: React.FC<OfferPropsType> = ({ data }) => {
               <img
                 className=" max-h-56 object-cover"
                 src={urlFor(service.image).url()!}
+                alt={service.name}
               />
             </figure>
             <div className="card-body justify-end">

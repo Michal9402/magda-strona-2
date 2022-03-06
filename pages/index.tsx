@@ -19,6 +19,10 @@ const Home: React.FC<HomeProps> = ({ data }) => {
       <Head>
         <title>Piękno Od Ręki</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta
+          name="description"
+          content="Piękno od ręki Siedlce dermapen oczyszczanie wodorowe makijaż permanentny henna pudrowa Warszawa salon kosmetyczny urody"
+        />
       </Head>
       <div className=" bg-white text-black">
         <Navbar />
