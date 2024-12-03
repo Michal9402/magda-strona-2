@@ -1,27 +1,40 @@
-# Next.js + Tailwind CSS Example
+# Offer Page for Cosmetology Services
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+This project is an offer page showcasing my wife cosmetology services. The page provides detailed information about the services offered, designed with a modern, responsive, and visually appealing layout.
 
-## Preview
+## Features
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+- **Service Descriptions**: Detailed information about each cosmetology service.
+- **Responsive Design**: The page is fully optimized for mobile, tablet, and desktop views.
+- **CMS Integration**: Dynamic content managed via a user-friendly CMS.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## Technologies Used
 
-## Deploy your own
+1. **[Next.js](https://nextjs.org/)**  
+   - Framework for building fast, server-rendered React applications.
+   - Utilized for its server-side rendering (SSR) and static site generation (SSG) features.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+2. **[TypeScript](https://www.typescriptlang.org/)**  
+   - Ensures type safety and enhances code maintainability.
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+3. **[Sanity](https://www.sanity.io/)**  
+   - Used as the CMS to manage all service-related content dynamically.
 
-## How to use
+4. **[Tailwind CSS](https://tailwindcss.com/)**  
+   - A utility-first CSS framework to implement a clean and customizable design.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Project Structure
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
+- **Frontend**: Built using Next.js with TypeScript for robust and scalable development.
+- **Backend CMS**: Sanity CMS is integrated to provide an intuitive content management interface.
+- **Styling**: Tailwind CSS ensures modern, responsive, and customizable UI/UX.
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Goals
+
+- Provide a professional and attractive web presence for cosmetology services.
+- Make the page easy to update without requiring technical expertise.
+- Ensure excellent user experience across all devices.
+
+---
+
+For inquiries or feedback, please contact me via the website.
